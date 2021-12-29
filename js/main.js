@@ -34,45 +34,47 @@ $(function() {
   });
 
   // page loading
-  $(document).ready(function() {
-    anime({
-      targets: '.art-preloader .art-preloader-content',
-      opacity: [0, 1],
-      delay: 200,
-      duration: 600,
-      easing: 'linear',
-      complete: function(anim) {
+  if (document.getElementById("preloader")){
+    $(document).ready(function() {
+      anime({
+        targets: '.art-preloader .art-preloader-content',
+        opacity: [0, 1],
+        delay: 200,
+        duration: 600,
+        easing: 'linear',
+        complete: function(anim) {
 
+        }
+      });
+      anime({
+        targets: '.art-preloader',
+        opacity: [1, 0],
+        delay: 2200,
+        duration: 400,
+        easing: 'linear',
+        complete: function(anim) {
+          $('.art-preloader').css('display', 'none');
+        }
+      });
+    });
+
+    var bar = new ProgressBar.Line(preloader, {
+      strokeWidth: 1.7,
+      easing: 'easeInOut',
+      duration: 1400,
+      delay: 750,
+      trailWidth: 1.7,
+      svgStyle: {
+        width: '100%',
+        height: '100%'
+      },
+      step: (state, bar) => {
+        bar.setText(Math.round(bar.value() * 100) + ' %');
       }
     });
-    anime({
-      targets: '.art-preloader',
-      opacity: [1, 0],
-      delay: 2200,
-      duration: 400,
-      easing: 'linear',
-      complete: function(anim) {
-        $('.art-preloader').css('display', 'none');
-      }
-    });
-  });
 
-  var bar = new ProgressBar.Line(preloader, {
-    strokeWidth: 1.7,
-    easing: 'easeInOut',
-    duration: 1400,
-    delay: 750,
-    trailWidth: 1.7,
-    svgStyle: {
-      width: '100%',
-      height: '100%'
-    },
-    step: (state, bar) => {
-      bar.setText(Math.round(bar.value() * 100) + ' %');
-    }
-  });
-
-  bar.animate(1);
+    bar.animate(1);
+  }
 
   // counters
   anime({
@@ -107,7 +109,7 @@ $(function() {
     strokeWidth: 7,
     easing: 'easeInOut',
     duration: 1400,
-    delay: 2500,
+    delay: document.getElementById("preloader") ? 2500 : 1300,
     trailWidth: 7,
     step: function(state, circle) {
       var value = Math.round(circle.value() * 100);
@@ -125,7 +127,7 @@ $(function() {
     strokeWidth: 7,
     easing: 'easeInOut',
     duration: 1400,
-    delay: 2600,
+    delay: document.getElementById("preloader") ? 2500 : 1300,
     trailWidth: 7,
     step: function(state, circle) {
       var value = Math.round(circle.value() * 100);
@@ -143,7 +145,7 @@ $(function() {
     strokeWidth: 7,
     easing: 'easeInOut',
     duration: 1400,
-    delay: 2600,
+    delay: document.getElementById("preloader") ? 2500 : 1300,
     trailWidth: 7,
     step: function(state, circle) {
       var value = Math.round(circle.value() * 100);
@@ -161,7 +163,7 @@ $(function() {
     strokeWidth: 7,
     easing: 'easeInOut',
     duration: 1400,
-    delay: 2700,
+    delay: document.getElementById("preloader") ? 2500 : 1300,
     trailWidth: 7,
     step: function(state, circle) {
       var value = Math.round(circle.value() * 100);
@@ -179,7 +181,7 @@ $(function() {
     strokeWidth: 1.72,
     easing: 'easeInOut',
     duration: 1400,
-    delay: 2800,
+    delay: document.getElementById("preloader") ? 2500 : 1500,
     trailWidth: 1.72,
     svgStyle: {
       width: '100%',
@@ -196,7 +198,7 @@ $(function() {
     strokeWidth: 1.72,
     easing: 'easeInOut',
     duration: 1400,
-    delay: 2900,
+    delay: document.getElementById("preloader") ? 2500 : 1500,
     trailWidth: 1.72,
     svgStyle: {
       width: '100%',
@@ -213,7 +215,7 @@ $(function() {
     strokeWidth: 1.72,
     easing: 'easeInOut',
     duration: 1400,
-    delay: 3000,
+    delay: document.getElementById("preloader") ? 2500 : 1500,
     trailWidth: 1.72,
     svgStyle: {
       width: '100%',
@@ -230,7 +232,7 @@ $(function() {
     strokeWidth: 1.72,
     easing: 'easeInOut',
     duration: 1400,
-    delay: 3100,
+    delay: document.getElementById("preloader") ? 2500 : 1500,
     trailWidth: 1.72,
     svgStyle: {
       width: '100%',
@@ -247,7 +249,7 @@ $(function() {
     strokeWidth: 1.72,
     easing: 'easeInOut',
     duration: 1400,
-    delay: 3200,
+    delay: document.getElementById("preloader") ? 2500 : 1500,
     trailWidth: 1.72,
     svgStyle: {
       width: '100%',
@@ -264,7 +266,7 @@ $(function() {
     strokeWidth: 1.72,
     easing: 'easeInOut',
     duration: 1400,
-    delay: 3200,
+    delay: document.getElementById("preloader") ? 2500 : 1500,
     trailWidth: 1.72,
     svgStyle: {
       width: '100%',
@@ -281,7 +283,7 @@ $(function() {
     strokeWidth: 1.72,
     easing: 'easeInOut',
     duration: 1400,
-    delay: 3200,
+    delay: document.getElementById("preloader") ? 2500 : 1500,
     trailWidth: 1.72,
     svgStyle: {
       width: '100%',
